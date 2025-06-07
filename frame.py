@@ -73,7 +73,7 @@ def head_train(Global_g, seq_val,lbl_val, feat_val, args, tag):
 
 def tail_train(Global_g, seq_val, lbl_val, feat_val, args, tag):
 
-    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 尾类训练 ++++++++++++++++++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ tail class training ++++++++++++++++++++++++++++++++++++++++")
 
     model_t = New_Net(args)
     optimizer = torch.optim.AdamW(model_t.parameters(), lr=args.t_lr, eps=args.adam_epsilon)
