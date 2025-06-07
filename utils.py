@@ -14,7 +14,7 @@ def read_data(DNABERT, label_seq_path, features_file, labels_file, k, single_spl
         combined_df = pd.concat([sequences_df, labels_df], axis=1)
         if single_split == True:
             indices = np.arange(combined_df.shape[0])
-            train_index, test_index = train_test_split( indices, test_size=1 / k, random_state=19)
+            train_index, test_index = train_test_split( indices, test_size=1 / k, random_state=42)
             train_df = combined_df.iloc[train_index]
             test_df = combined_df.iloc[test_index]
 
@@ -28,7 +28,7 @@ def read_data(DNABERT, label_seq_path, features_file, labels_file, k, single_spl
             test_labels = test_df.iloc[:, 1:]
             folds = [(train_feat_df, test_feat_df, train_sequences, test_sequences, train_labels, test_labels, train_index, test_index)]
         else:
-            kf = KFold(n_splits=k, shuffle=True, random_state=19)
+            kf = KFold(n_splits=k, shuffle=True, random_state=42)
             folds = []
             for fold, (train_index, test_index) in enumerate(kf.split(combined_df)):
                 train_df = combined_df.iloc[train_index]
@@ -56,12 +56,9 @@ def read_data(DNABERT, label_seq_path, features_file, labels_file, k, single_spl
         y = labels_df.values
 
         if single_split:
-            # Perform single train-test split
-            # 获取索引
             indices = np.arange(X.shape[0])
-            # 随机划分数据和索引
             X_train, X_val, y_train, y_val, train_index, val_index = train_test_split(
-                X, y, indices, test_size=1 / k, random_state=19)
+                X, y, indices, test_size=1 / k, random_state=42)
 
             train_sequences = []
             test_sequences = []
