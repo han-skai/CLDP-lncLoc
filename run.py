@@ -11,11 +11,11 @@ parser.add_argument('--all_class_num', default=5, type=int, metavar='N',
 parser.add_argument('--head_class_num', default=5, type=int, metavar='N',
                     help='the number of head class')
 
-parser.add_argument('-fp', '--fea_path', default=r'../data/20240812/K562/lnc_K562_3220_to_1697_KRTCPCFL286d_header.csv',type=str, metavar='PATH',help='path of feature path')
-parser.add_argument('-lp', '--lab_path', default=r'../data/20240812/K562/lnc_K562_3220_to_k562_1697_seq_label.csv',type=str, metavar='PATH', help='path of label path')
-parser.add_argument('-cp', '--con_path', default=r'../data/20240812/K562/b0.1_t0.75_100993e_1697s_connection_matrix.csv', type=str, metavar='PATH',help='path of connection_matrix path')
-parser.add_argument('-pp', '--pretrain_path', default=r'/home/ubuntu/han_skai/model-master-server-cpu/GP-HTATH-moster/DNABERT-2-117M',type=str, metavar='PATH',help='path of DNA_BERT_2 model')
-parser.add_argument('-slp', '--label_seq_path', default=r'../data/20240812/K562/lnc_K562_3220_to_k562_1697_seq_label.csv',type=str, metavar='PATH',help='path of connection_matrix path')
+parser.add_argument('-fp', '--fea_path', default=r'../data/K562/lnc_K562_3220_to_1697_KRTCPCFL286d_header.csv',type=str, metavar='PATH',help='path of feature path')
+parser.add_argument('-lp', '--lab_path', default=r'../data/K562/lnc_K562_3220_to_k562_1697_seq_label.csv',type=str, metavar='PATH', help='path of label path')
+parser.add_argument('-cp', '--con_path', default=r'../data/K562/b0.1_t0.75_100993e_1697s_connection_matrix.csv', type=str, metavar='PATH',help='path of connection_matrix path')
+parser.add_argument('-pp', '--pretrain_path', default=r'/home/ubuntu/han_skai/model-master/DNABERT-2-117M',type=str, metavar='PATH',help='path of DNA_BERT_2 model')
+parser.add_argument('-slp', '--label_seq_path', default=r'../data/K562/lnc_K562_3220_to_k562_1697_seq_label.csv',type=str, metavar='PATH',help='path of connection_matrix path')
 parser.add_argument('--freeze_bert', default=True, help='freeze_bert or not')
 parser.add_argument('--freeze_layer_num', default=8, type=int, help='freeze_layer_num of DNABERT model')
 # ++++++++++++ proto train ++++++++++++++++++
@@ -58,11 +58,11 @@ parser.add_argument('--split-ratio',type=float, nargs=3, default=[0.8, 0.1, 0.1]
 
 parser.add_argument('--seed', type=int, default=42, help="Random seed (default: 42)")
 parser.add_argument('--head_epochs', type=int, default=200, help="head_tasks")
-parser.add_argument('--h_lr', '--head_learning_rate', default=0.0001, type=float, metavar='LR', help='initial learning rate')   # 初始值为 0.00001
+parser.add_argument('--h_lr', '--head_learning_rate', default=0.0001, type=float, metavar='LR', help='initial learning rate')   
 parser.add_argument('--h_step_size', default=2800, type=int, metavar='N', help='run step_size steps to adjust lr')
 
 parser.add_argument('--tail_epochs', type=int, default=1000, help="tail_tasks")
-parser.add_argument('--t_lr', '--tail_learning_rate', default=0.0001, type=float, metavar='LR', help='initial learning rate')   # 初始值为 0.00001
+parser.add_argument('--t_lr', '--tail_learning_rate', default=0.0001, type=float, metavar='LR', help='initial learning rate') 
 parser.add_argument('--t_step_size', default=2800, type=int, metavar='N', help='run step_size steps to adjust lr')
 
 parser.add_argument('--head_inc_out_feats', default=256, type=int, help='HGCN sequences embedding dimensions')
@@ -139,6 +139,6 @@ if __name__ == '__main__':
 
     elapsed_time = end_time - start_time
 
-    print(f"程序运行时间：{elapsed_time} s")
-    print(f"程序运行时间：{elapsed_time/60} min")
-    print(f"程序运行时间：{elapsed_time/3600} h")
+    print(f"run time：{elapsed_time} s")
+    print(f"run time：{elapsed_time/60} min")
+    print(f"run time：{elapsed_time/3600} h")
