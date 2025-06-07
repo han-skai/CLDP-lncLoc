@@ -3,7 +3,6 @@ import numpy as np
 import dgl
 import random
 
-
 class LocalSubgraph:
     def __init__(self, h_g, h, seed=None):
 
