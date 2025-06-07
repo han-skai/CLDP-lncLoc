@@ -254,4 +254,3 @@ class New_Net(nn.Module):
 
 
 
-
