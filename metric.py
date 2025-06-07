@@ -69,7 +69,6 @@ def accuracy(Y_hat, Y):
     return result
 
 
-
 def ranking_loss(Outputs, target):
     RankingLoss = label_ranking_loss(target, Outputs)
     return RankingLoss
